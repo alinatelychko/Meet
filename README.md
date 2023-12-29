@@ -77,3 +77,8 @@
     Given the events app is open
     When I navigate to the charts section
     Then I should see a chart displaying the number of upcoming events in each city
+
+
+Using serverless functions:
+
+These serverless functions will be responsible for securely managing user access, obtaining and refreshing OAuth2 tokens, and ensuring the security of interactions between your React application and the Google Calendar API. The serverless architecture offers benefits such as easy scalability, efficient resource utilization, and cost-effectiveness, as you only pay for the actual execution of functions rather than maintaining a dedicated server infrastructure
