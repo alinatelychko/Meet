@@ -16,7 +16,7 @@ export const extractLocations = (events) => {
 
 export const getEvents = async () => {
     if (window.location.href.startsWith("http://localhost")) {
-      return mockData;
+      return mockData[0].items;
     }
   
     const token = await getAccessToken();
