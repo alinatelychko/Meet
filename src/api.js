@@ -57,8 +57,7 @@ export const getEvents = async () => {
       const code = await searchParams.get("code");
       if (!code) {
         const response = await fetch(
-          "https://https://7ovuh5j33f.execute-api.eu-central-1.amazonaws.com//dev/api/get-auth-url"
-        );
+          "https://https://7ovuh5j33f.execute-api.eu-central-1.amazonaws.com//dev/api/get-auth-url");
         const result = await response.json();
         const { authUrl } = result;
         return (window.location.href = authUrl);

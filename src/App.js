@@ -24,39 +24,16 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, [currentCity]);
+  }, [currentCity, currentNOE, fetchData]);
 
   return (
     <div className="App">
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-      <NumberOfEvents />
+      <NumberOfEvents  setCurrentNOE={setCurrentNOE}/>
       <EventList events={events} />
     </div>
   );
 
   }
-  
-  // const fetchData = async () => {
-  //   const allEvents = await getEvents();
-  //   const filteredEvents =
-  //     currentCity === 'See all cities'
-  //       ? allEvents
-  //       : allEvents.filter((event) => event.location === currentCity);
-  //   setEvents(filteredEvents.slice(0, noe));
-  //   setAllLocations(extractLocations(allEvents));
-  // };
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, [currentCity, noe]); // Include 'noe' in the dependency array
-
-//   return (
-//     <div className="App">
-//       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-//       <NumberOfEvents setNoe={setNoe} />
-//       <EventList events={events} />
-//     </div>
-//   );
-// }
 
 export default App;
