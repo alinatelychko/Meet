@@ -23,28 +23,60 @@ describe('<App /> component', () => {
    });
 });
 
-describe('<App />, integration', () => {
 
-    test('renders a list of events matching the city which user selected', async() => {
 
+describe('<App /> integration', () => {
+    test('renders a list of events matching the city selected by the user', async () => {
         const user = userEvent.setup();
-        const appComponent = render(<App />);
-        const appDom = appComponent.container.firstChild;
-        const citySearchComponent = appDom.querySelector('#city-search');
-        const textbox = within(citySearchComponent).queryByRole('textbox');
-
-        await user.type(textbox, 'Berlin');
-        const berlinSuggestionItem = within(citySearchComponent).queryByText('Berlin, Germany');
-
+        const AppComponent = render(<App />);
+        const AppDOM = AppComponent.container.firstChild;
+    
+        const CitySearchDOM = AppDOM.querySelector('#city-search');
+        const CitySearchInput = within(CitySearchDOM).queryByRole('textbox');
+    
+        await user.type(CitySearchInput, "Berlin");
+        const berlinSuggestionItem = within(CitySearchDOM).queryByText('Berlin, Germany');
         await user.click(berlinSuggestionItem);
+    
+        const EventListDOM = AppDOM.querySelector('#event-list');
+        const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');   
+    
         const allEvents = await getEvents();
-        const filteredEvents = allEvents.filter((event) => {
-            return event.location == 'Berlin, Germany';
-        });
+        const berlinEvents = allEvents.filter(
+          event => event.location === 'Berlin, Germany'
+        );
+    
+        expect(allRenderedEventItems.length).toBe(berlinEvents.length);
+        allRenderedEventItems.forEach(event => {
+            expect(event.textContent).toContain("Berlin, Germany");
+          });
+      });
+});
 
-        const eventListDom = appDom.querySelector('#event-list');
-        const renderedEvents = within(eventListDom).queryAllByRole('listitem');
-        expect(renderedEvents.length).toBe(filteredEvents.length);
 
-    })
-})
+
+// describe('<App />, integration', () => {
+
+//     test('renders a list of events matching the city which user selected', async() => {
+
+//         const user = userEvent.setup();
+//         const appComponent = render(<App />);
+//         const appDom = appComponent.container.firstChild;
+//         const citySearchComponent = appDom.querySelector('#city-search');
+//         const textbox = within(citySearchComponent).queryByRole('textbox');
+
+//         await user.type(textbox, 'Berlin');
+//         const berlinSuggestionItem = within(citySearchComponent).queryByText('Berlin, Germany');
+
+//         await user.click(berlinSuggestionItem);
+//         const allEvents = await getEvents();
+//         const filteredEvents = allEvents.filter((event) => {
+//             return event.location == 'Berlin, Germany';
+//         });
+
+//         const eventListDom = appDom.querySelector('#event-list');
+//         const renderedEvents = within(eventListDom).queryAllByRole('listitem');
+//         expect(renderedEvents.length).toBe(filteredEvents.length);
+
+//     })
+// })

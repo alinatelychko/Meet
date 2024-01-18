@@ -79,19 +79,19 @@ describe('<CitySearch /> component', () => {
 
 describe('<CitySearch/>, integration', () => {
 
-    test('renders suggestionList when app is rendered and user focus in textbox', async() => {
-      const user = userEvent.setup();
-      const appComponent = render(<App />);
-      const appDom = appComponent.container.firstChild;
+  test('renders suggestions list when the app is rendered.', async () => {
+    const user = userEvent.setup();
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
 
-      const citySearchDom = appDom.querySelector('#city-search');
-      const textbox = within(citySearchDom).queryByRole('textbox');
-      await user.click(textbox);
-      
-      const allEvents = await getEvents();
-      const allLocations = extractLocations(allEvents);
+    const CitySearchDOM = AppDOM.querySelector('#city-search');
+    const cityTextBox = within(CitySearchDOM).queryByRole('textbox');
+    await user.click(cityTextBox);
 
-      const suggestionList = within(citySearchDom).queryAllByRole('listitem');
-      expect(suggestionList.length).toBe(allLocations.length + 1);
-    });
+    const allEvents = await getEvents();
+    const allLocations = extractLocations(allEvents);
+
+    const suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem');
+    expect(suggestionListItems.length).toBe(allLocations.length + 1);
+ });
 })

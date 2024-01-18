@@ -14,8 +14,8 @@ const CitySearch = ({allLocations, setCurrentCity}) => {
         setSuggaestions(filteredLocations);
        // setShowSuggestion(false);
       
-
     }
+    
     const handleClick = (event) => {
       const value = event.target.textContent;
       setQuery(value);
@@ -26,6 +26,8 @@ const CitySearch = ({allLocations, setCurrentCity}) => {
     useEffect(() => {
       setSuggaestions(allLocations);
     }, [`${allLocations}`]);
+
+
     return(
         <div id="city-search">
           <input
