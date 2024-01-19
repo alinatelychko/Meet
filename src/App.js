@@ -9,7 +9,6 @@ import { extractLocations, getEvents } from './api';
 function App() {
   const [events, setEvents] = useState([]);
   const [currentNOE, setCurrentNOE] = useState(32);
-  // const [noe, setNoe] = useState(32);
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState('See all cities');
 
