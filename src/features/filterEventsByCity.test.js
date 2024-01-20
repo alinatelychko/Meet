@@ -3,8 +3,10 @@ import { render, within, waitFor } from '@testing-library/react';
 import App from '../App';
 import { getEvents } from '../mock-data';
 import userEvent from '@testing-library/user-event';
+import mockEvents from "../mock-data";
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
+
 
 defineFeature(feature, test => {
     //scenario1
@@ -89,6 +91,8 @@ defineFeature(feature, test => {
             // citySearchInput.value should have the value "Berlin, Germany" at this point
             const berlinEvents = allEvents.filter(event => event.location === citySearchInput.value)
             expect(EventListItems).toHaveLength(berlinEvents.length);
+            
+
         });
     });
     });

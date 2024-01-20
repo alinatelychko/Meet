@@ -13,8 +13,9 @@ describe('<CitySearch /> component', () => {
 
   test('suggestion list is hidden default', () => {
     const suggestionList = CitySearchComponent.queryByRole('list');
-    expect(suggestionList).not.toBeInTheDocument();
-  });  
+    expect(suggestionList).toBeFalsy();
+  });
+
   test('renders a suggestionList when city box is clicked', async() => {
     const user = userEvent.setup();
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
@@ -23,7 +24,7 @@ describe('<CitySearch /> component', () => {
     const suggestionList = CitySearchComponent.queryByRole('list');
     expect(suggestionList).toBeInTheDocument();
     expect(suggestionList).toHaveClass('suggestion');
-  })
+  });
   test('renders text input', () => {
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
     expect(cityTextBox).toBeInTheDocument();
@@ -76,6 +77,7 @@ describe('<CitySearch /> component', () => {
   });
 
 });
+
 
 describe('<CitySearch/>, integration', () => {
 

@@ -16,12 +16,11 @@ const CitySearch = ({allLocations, setCurrentCity}) => {
       
     }
     
-    const handleClick = (event) => {
-      const value = event.target.textContent;
-      setQuery(value);
+    const handleClick = (suggestion) => {
+      setQuery(suggestion);
       setShowSuggestion(false);
-      setCurrentCity(value);
-    } 
+      setCurrentCity(suggestion);
+  };
 
     useEffect(() => {
       setSuggestions(allLocations);
@@ -39,9 +38,16 @@ const CitySearch = ({allLocations, setCurrentCity}) => {
              onChange={handleInputChange}
          />  
          {showSuggestion ? <ul className='suggestion'>
-            {suggestions.map((suggestion) => {
-                return <li onClick={handleClick} key={suggestion}>{suggestion}</li>
-            })}
+         {suggestions.map((suggestion) => {
+                        return (
+                            <li
+                                onClick={() => handleClick(suggestion)}
+                                key={suggestion}
+                            >
+                                {suggestion}
+                            </li>
+                        );
+                    })}
             <li key='See all the cities'> 
               <b>See all cities</b>
             </li>

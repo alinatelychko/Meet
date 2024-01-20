@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, [currentCity, currentNOE, fetchData]);
+  }, [currentCity, currentNOE]);
 
   return (
     <div className="App">
