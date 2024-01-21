@@ -10,12 +10,14 @@ const NumberOfEvents = ({setNumberOfEvents}) => {
     }
        return (
         <div id="numberOfEvents">
-            <input
-              type="text"
-              value={eventNumber}
-              onChange={handleInputChange}
-            />
-        </div>
+        <label htmlFor="eventNumberInput">Number of Events</label>
+        <input
+          type="text"
+          id="eventNumberInput"
+          value={eventNumber}
+          onChange={handleInputChange}
+        />
+      </div>
        )
 }
 
