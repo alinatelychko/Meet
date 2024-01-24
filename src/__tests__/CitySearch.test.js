@@ -8,7 +8,13 @@ describe('<CitySearch /> component', () => {
     let CitySearchComponent;
 
     beforeEach(() => {
-        CitySearchComponent = render(<CitySearch allLocations={[]}/>);
+      const setInfoAlert = jest.fn();
+
+        CitySearchComponent = render(<CitySearch 
+          allLocations={[]}
+          setCurrentCity={() => { }}
+           setInfoAlert={setInfoAlert}
+        />);
     })
 
   test('suggestion list is hidden default', () => {
@@ -61,7 +67,10 @@ describe('<CitySearch /> component', () => {
     const user = userEvent.setup();
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
-    CitySearchComponent.rerender(<CitySearch allLocations={allLocations} setCurrentCity={() => { }}/>);
+    CitySearchComponent.rerender(<CitySearch  
+      allLocations={allLocations}
+      setCurrentCity={() => { }} 
+      setInfoAlert={() => { }}/>);
 
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
     await user.type(cityTextBox, 'Berlin');
@@ -72,7 +81,7 @@ describe('<CitySearch /> component', () => {
     await user.click(Berlinsuggestion);
 
     expect(cityTextBox).toHaveValue(Berlinsuggestion.textContent);
-
+    expect(setInfoAlert).toHaveBeenCalledWith('');
 
   });
 
@@ -95,5 +104,6 @@ describe('<CitySearch/>, integration', () => {
 
     const suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem');
     expect(suggestionListItems.length).toBe(allLocations.length + 1);
+    
  });
 })

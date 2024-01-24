@@ -1,128 +1,131 @@
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f8fb;
-  color: #333;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f8fb;
+    color: rgba(27, 39, 71, 1); /* color2 with 100% opacity */
 }
 
 .App {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(4, 50, 172, 0.2); /* color2 with 20% opacity */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
 }
 
-#city-search {
-  margin-bottom: 20px;
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none; /* Remove bullets (dots) from lists */
 }
 
-.city {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
+
+.city,
+#numberOfEvents input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 8px;
 }
 
 .suggestion {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .suggestion li {
-  padding: 10px;
-  cursor: pointer;
+    padding: 10px;
+    cursor: pointer;
+
 }
 
 .suggestion li:hover {
-  background-color: #d1e7ff;
+    background-color: #c9d1ff; /* color5 */
 }
 
-#numberOfEvents {
-  margin-bottom: 20px;
+.suggestion {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-#numberOfEvents input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
+.suggestion li {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px; /* Set your desired font size */
 }
 
-ul {
-  padding: 0;
-  margin: 0;
+/* Add this specific style for "See all cities" */
+.suggestion li b {
+    font-size: 12px; /* Set your desired font size */
 }
 
-li {
-  list-style: none;
-}
 
 .event {
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
-  padding: 10px;
-  position: relative;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    position: relative;
+    border-radius: 15px;
 }
 
 .showDetailsButton {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #4caf50;
-  color: #fff;
-  padding: 5px 10px;
-  border: none;
-  cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #495997; /* color3 */
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
 .showDetailsButton:hover {
-  background-color: #45a049;
+    background-color: #8492f2; /* color4 */
 }
 
 .details {
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 15px;
 }
 
-
-
-
-/* .App {
-  text-align: center;
+.alerts-container {
+    position: fixed;
+    top: 0px;
+    left: 20px;
+    width: 250px;
+    z-index: 1000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.color1 {
+    color: #000000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.color2 {
+    color: #1b2747;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.color3 {
+    color: #495997;
 }
 
-.App-link {
-  color: #61dafb;
+.color4 {
+    color: #8492f2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.color5 {
+    color: #c9d1ff;
+}
+
+#numberOfEvents {
+    margin-bottom: 20px;
+    margin-top: 20px; /* Add margin-top to create space above the section */
+}
+
