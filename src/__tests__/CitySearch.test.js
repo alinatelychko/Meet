@@ -42,7 +42,8 @@ describe('<CitySearch /> component', () => {
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
 
-    CitySearchComponent.rerender(<CitySearch allLocations={allLocations}/>);
+    CitySearchComponent.rerender(<CitySearch allLocations={allLocations} setCurrentCity={() => { }} 
+    setInfoAlert={() => { }}/>);
     // User types 'Berlin' in textbox
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
     await user.type(cityTextBox, 'Berlin');
@@ -67,10 +68,11 @@ describe('<CitySearch /> component', () => {
     const user = userEvent.setup();
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
+    const setInfoAlert = jest.fn();
     CitySearchComponent.rerender(<CitySearch  
       allLocations={allLocations}
       setCurrentCity={() => { }} 
-      setInfoAlert={() => { }}/>);
+      setInfoAlert={setInfoAlert}/>);
 
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
     await user.type(cityTextBox, 'Berlin');

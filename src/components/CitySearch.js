@@ -48,10 +48,10 @@ const CitySearch = ({allLocations, setCurrentCity, setInfoAlert}) => {
          {showSuggestion ? <ul className='suggestion'>
          {suggestions.map((suggestion) => {
                         return (
-                            <li   onClick={() => handleClick(suggestion)} key={suggestion} >{suggestion} </li>
+                            <li   onClick={() => handleClick(suggestion)} key={suggestion} >{suggestion}</li>
                         );
                     })}
-            <li key='See all the cities'> 
+            <li key='See all the cities' onClick={() => handleClick('See all cities')}> 
               <b>See all cities</b>
             </li>
          </ul> : null}
