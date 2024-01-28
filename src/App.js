@@ -28,6 +28,16 @@ function App() {
   }
 
   useEffect(() => {
+    if ('onLine' in navigator) {
+      if (navigator.onLine) {
+        setWarningAlert('');
+      } else {
+        setWarningAlert('You are offline. The displayed list may not be up to date.');
+      }
+    } else {
+      // Handle case where navigator.onLine is not supported (older browsers)
+      console.error('navigator.onLine is not supported in this browser.');
+    }
     fetchData();
   }, [currentCity, currentNOE]);
 
